@@ -5628,10 +5628,10 @@ react-is@^16.13.0, react-is@^16.7.0, react-is@^16.8.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
-react-native-cidscan@^1.0.82:
-  version "1.0.82"
-  resolved "https://registry.yarnpkg.com/react-native-cidscan/-/react-native-cidscan-1.0.82.tgz#8be8cec03d512a25e434e618da8299d6d41fd25d"
-  integrity sha512-vDAgvGRRRIV0C381KfyPzrRvNoWxsqcdco1Oe+xtzff3jfPqc6Uj4CELMQHoa2mZgSWY4G8MdxeHecFuyBj5Cw==
+react-native-cidscan@^1.0.96:
+  version "1.0.96"
+  resolved "https://registry.yarnpkg.com/react-native-cidscan/-/react-native-cidscan-1.0.96.tgz#23db7f1dd5952cfe2d47f6b813a123a51af6345f"
+  integrity sha512-BbLNOGUMHTZPqFypaSPe5Jp1bjZvMLRn1Az5xlgnb334Q+BTIr4sXsFgSzLmz8eJl24cew0EL1fJ619nM1PoVQ==
 
 react-native-codegen@^0.0.6:
   version "0.0.6"
@@ -5671,6 +5671,11 @@ react-native-iphone-x-helper@^1.3.0:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/react-native-iphone-x-helper/-/react-native-iphone-x-helper-1.3.1.tgz#20c603e9a0e765fd6f97396638bdeb0e5a60b010"
   integrity sha512-HOf0jzRnq2/aFUcdCJ9w9JGzN3gdEg0zFE4FyYlp4jtidqU03D5X7ZegGKfT1EWteR0gPBGp9ye5T5FvSWi9Yg==
+
+react-native-permissions@^3.0.5:
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/react-native-permissions/-/react-native-permissions-3.0.5.tgz#94542a343abdac801fa0a4593ea2c751cb45c41f"
+  integrity sha512-hcvLtHhTyOTXC+CCv79d4Qtdnj6PGuY5Ms0fhW8V6Et1T/mPvzO6++Du4jwEv/oHZ62qMWKUDq0/Tsh63QHuyQ==
 
 react-native-ratings@8.0.4:
   version "8.0.4"

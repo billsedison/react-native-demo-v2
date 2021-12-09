@@ -2,6 +2,7 @@
 import React, {Component} from 'react';
 import {Button, View, NativeEventEmitter, ScrollView} from 'react-native';
 import Cidscan from 'react-native-cidscan';
+import {PERMISSIONS, requestMultiple} from 'react-native-permissions';
 
 const captureIDHandlerEmitter = new NativeEventEmitter(Cidscan);
 
@@ -12,18 +13,31 @@ const mCust = 'P4I082220190001';
 var pp;
 
 async function init() {
+  const statuses = await requestMultiple([
+    PERMISSIONS.IOS.CAMERA,
+    PERMISSIONS.ANDROID.CAMERA,
+  ]);
+  const granted =
+    statuses[PERMISSIONS.IOS.CAMERA] === 'granted' ||
+    statuses[PERMISSIONS.ANDROID.CAMERA] === 'granted';
+  if (!granted) {
+    console.log('You need to grant the camera permission first!');
+    return;
+  }
   await Cidscan.initCaptureID(callback);
   this.subscription = captureIDHandlerEmitter.addListener(
     'decoderEvent',
     data => {
       console.log(JSON.stringify(data));
-      pp.props.navigation.navigate('Home');
+      Cidscan.startDecoder();
+      // pp.props.navigation.navigate('Home');
     },
   );
 }
 
 async function activate() {
   await Cidscan.activateEDKLicense(mKey, mCust, license);
+  Cidscan.startDecoder();
 }
 
 function callback(error, result) {
@@ -42,22 +56,26 @@ function license(error, result) {
   }
 }
 
-async function startscanner(viewid) {
-  Cidscan.enableAllBarcodes(true);
-  await Cidscan.startCameraPreview(camera);
-  Cidscan.startDecoder();
-}
+// async function startscanner(viewid) {
+//   Cidscan.enableAllBarcodes(true);
+//   await Cidscan.startCameraPreviewWithOverlay(viewid, camera);
+//   Cidscan.startDecoder();
+// }
 
-function camera(error, result) {
-  if (error) {
-    // do something in case of an error
-  } else {
-    Cidscan.closeCamera();
-    // Handle success
-  }
-}
+// function camera(error, result) {
+//   if (error) {
+//     // do something in case of an error
+//   } else {
+//     // Handle success
+//   }
+// }
 
 export default class Homescreen extends Component {
+  async componentDidMount() {
+    await init();
+    this.props.navigation.navigate('Scanner');
+  }
+
   render() {
     pp = this;
     return (
@@ -70,15 +88,14 @@ export default class Homescreen extends Component {
             backgroundColor: 'rgba(100, 100, 100, 0)',
           }}>
           <Button
-            title="Initialize"
+            title="Temp"
             onPress={() => {
-              init();
             }}
           />
           <Button
-            title="StartScan"
+            title="Initialize"
             onPress={() => {
-              startscanner();
+              init();
             }}
           />
           <Button
